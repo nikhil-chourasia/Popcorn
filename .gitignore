@@ -1,0 +1,5 @@
+ledger
+"Project Information.md"
+backend/.env
+frontend/.env
+frontend/node_modules
