@@ -84,16 +84,18 @@ func HandleGoogleCallback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	session.Save(sessionID, session.SessionData{
-		UserID: userInfo.ID,
-		Email: userInfo.Email,
-		Name: userInfo.Name,
-		Picture: userInfo.Picture,
-		AccessToken: token.AccessToken,
+	if err := session.Save(sessionID, session.SessionData{
+		UserID:       userInfo.ID,
+		Email:        userInfo.Email,
+		Name:         userInfo.Name,
+		Picture:      userInfo.Picture,
+		AccessToken:  token.AccessToken,
 		RefreshToken: token.RefreshToken,
-		ExpiresAt: token.Expiry,
-
-	})
+		ExpiresAt:    token.Expiry,
+	}); err != nil {
+		http.Error(w, "Failed to save session: "+err.Error(), http.StatusInternalServerError)
+		return
+	}
 
 	http.SetCookie(w, &http.Cookie{
 		Name: "session_id",
@@ -105,5 +107,5 @@ func HandleGoogleCallback(w http.ResponseWriter, r *http.Request) {
 	})
 
 	frontendURL := os.Getenv("FRONTEND_URL")
-	http.Redirect(w, r, frontendURL+"/", http.StatusTemporaryRedirect)	// you can add the redirect route here
+	http.Redirect(w, r, frontendURL+"/library", http.StatusTemporaryRedirect)	// you can add the redirect route here
 }

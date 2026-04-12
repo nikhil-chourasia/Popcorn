@@ -5,7 +5,7 @@ import (
 	"crypto/rand"
 	"encoding/base64"
 	"encoding/json"
-	"os"
+	// "os"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -24,11 +24,18 @@ type SessionData struct {
 var client *redis.Client
 
 func Init() {
-	opt, err:= redis.ParseURL(os.Getenv("REDIS_URL"))
-	if err != nil {
-		panic("Invalid Redis URL: " + err.Error())
+	client = redis.NewClient(&redis.Options{
+		Addr:     "redis-12467.c330.asia-south1-1.gce.cloud.redislabs.com:12467",
+		Username: "default",
+		Password: "cb0QtQ4BCsvyKvy73uYC3fl1MWrl7PAI",
+		DB:       0,
+	})
+
+	if err := client.Ping(context.Background()).Err(); err != nil {
+		panic("Cannot connect to Redis: " + err.Error())
 	}
-	client = redis.NewClient(opt)
+
+	println("Redis connected successfully")
 }
 
 func NewID() (string, error) {
@@ -45,11 +52,11 @@ func Save(id string, data SessionData) error {
 	if err != nil {
 		return err
 	}
-	return client.Set(context.Background(), "session"+id, bytes, 7*24*time.Hour).Err()
+	return client.Set(context.Background(), "session:"+id, bytes, 7*24*time.Hour).Err()
 }
 
 func Get(id string) (SessionData, bool) {
-	val, err := client.Get(context.Background(), "session"+id).Result()
+	val, err := client.Get(context.Background(), "session:"+id).Result()
 	if err != nil {
 		return SessionData{}, false
 	}
@@ -62,5 +69,5 @@ func Get(id string) (SessionData, bool) {
 }
 
 func Delete(id string) {
-	client.Del(context.Background(), "session"+id)
+	client.Del(context.Background(), "session:"+id)
 }

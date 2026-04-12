@@ -2,6 +2,7 @@ package main
 
 import (
 	"backend/handlers"
+	"backend/session"
 	"fmt"
 	"log"
 	"net/http"
@@ -39,9 +40,12 @@ func main() {
 		port = "8080"
 	}
 
-	http.HandleFunc("/api/auth/google", handlers.HandleGoogleLogin)
+	session.Init()
+	log.Println("Redis connected")
+
+	http.HandleFunc("/api/auth/google",   handlers.HandleGoogleLogin)
 	http.HandleFunc("/api/auth/callback", handlers.HandleGoogleCallback)
-	http.HandleFunc("/api/me", withCORS(handlers.HandleMe))
+	http.HandleFunc("/api/me",            withCORS(handlers.HandleMe))
 
 	fmt.Println("Popcorn backend starting... ")
 	log.Fatal(http.ListenAndServe(":"+port, nil))
