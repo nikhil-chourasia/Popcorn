@@ -1,5 +1,11 @@
+# General files
 ledger
-"Project Information.md"
+Project Information.md
+
+# Environments (sensitive data)
 backend/.env
 frontend/.env
-frontend/node_modules
+**/.env.local
+
+# Dependencies
+frontend/node_modules/

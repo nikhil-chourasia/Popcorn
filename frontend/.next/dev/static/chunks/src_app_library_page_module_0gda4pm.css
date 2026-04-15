@@ -1,0 +1,229 @@
+/* [project]/src/app/library/page.module.css [app-client] (css) */
+.page-module__SrRMZa__root {
+  color: #f5f6f8;
+  background-color: #080808;
+  flex-direction: column;
+  min-height: 100dvh;
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page-module__SrRMZa__glow {
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(#f0682014 0%, #0000 65%);
+  width: 800px;
+  height: 500px;
+  position: fixed;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.page-module__SrRMZa__header {
+  z-index: 50;
+  -webkit-backdrop-filter: blur(18px);
+  background: #080808e0;
+  border-bottom: 1px solid #ffffff0d;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 0 28px;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.page-module__SrRMZa__logoLink {
+  color: #f5f6f8;
+  letter-spacing: -.01em;
+  align-items: center;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+}
+
+.page-module__SrRMZa__logoLink svg {
+  color: #f06820;
+}
+
+.page-module__SrRMZa__userChip {
+  background: #ffffff0a;
+  border: 1px solid #ffffff12;
+  border-radius: 999px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px 5px 6px;
+  display: flex;
+}
+
+.page-module__SrRMZa__avatar {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.page-module__SrRMZa__userName {
+  color: #f5f6f8;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.page-module__SrRMZa__main {
+  z-index: 1;
+  flex-direction: column;
+  flex: 1;
+  gap: 36px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  display: flex;
+  position: relative;
+}
+
+.page-module__SrRMZa__welcomeSection {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.page-module__SrRMZa__title {
+  letter-spacing: -.035em;
+  color: #f5f6f8;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+}
+
+.page-module__SrRMZa__count {
+  color: #8b929c;
+  letter-spacing: 0;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.page-module__SrRMZa__empty {
+  color: #8b929c;
+  font-size: 14px;
+}
+
+.page-module__SrRMZa__grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  display: grid;
+}
+
+.page-module__SrRMZa__cardLink {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.page-module__SrRMZa__card {
+  cursor: pointer;
+  background: #1a1a1a;
+  border: 1px solid #ffffff0f;
+  border-radius: 12px;
+  flex-direction: column;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  display: flex;
+  overflow: hidden;
+}
+
+.page-module__SrRMZa__card:hover {
+  border-color: #f0682059;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px #0006;
+}
+
+.page-module__SrRMZa__thumb {
+  aspect-ratio: 16 / 10;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-module__SrRMZa__thumbImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform .3s;
+  display: block;
+}
+
+.page-module__SrRMZa__card:hover .page-module__SrRMZa__thumbImg {
+  transform: scale(1.04);
+}
+
+.page-module__SrRMZa__thumbPlaceholder {
+  color: #3a3a3a;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.page-module__SrRMZa__extBadge {
+  letter-spacing: .06em;
+  color: #fff;
+  background: #f06820e6;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.page-module__SrRMZa__cardInfo {
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px 14px;
+  display: flex;
+}
+
+.page-module__SrRMZa__fileName {
+  color: #f5f6f8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  letter-spacing: -.01em;
+  font-size: 13px;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.page-module__SrRMZa__fileMeta {
+  color: #8b929c;
+  font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .page-module__SrRMZa__header {
+    padding: 0 16px;
+  }
+
+  .page-module__SrRMZa__main {
+    padding: 32px 16px 60px;
+  }
+
+  .page-module__SrRMZa__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .page-module__SrRMZa__title {
+    font-size: 22px;
+  }
+}
+
+/*# sourceMappingURL=src_app_library_page_module_0gda4pm.css.map*/

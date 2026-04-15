@@ -1,0 +1,299 @@
+/* ── Root ─────────────────────────────────────────────────────────── */
+.root {
+  min-height: 100dvh;
+  background-color: #080808;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Ambient glow ────────────────────────────────────────────────── */
+.glow {
+  position: fixed;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(240, 104, 32, 0.1) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Logo ────────────────────────────────────────────────────────── */
+.logoLink {
+  position: fixed;
+  top: 22px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  z-index: 10;
+  transition: opacity 0.15s ease;
+}
+
+.logoLink:hover {
+  opacity: 0.75;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  color: #F06820;
+}
+
+.logoText {
+  font-size: 15px;
+  font-weight: 600;
+  color: #F5F6F8;
+  letter-spacing: -0.01em;
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Card header ─────────────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #F5F6F8;
+}
+
+.subheading {
+  font-size: 13.5px;
+  color: #8B929C;
+  line-height: 1.5;
+}
+
+/* ── Form ────────────────────────────────────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Field group ─────────────────────────────────────────────────── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #F5F6F8;
+  letter-spacing: -0.005em;
+}
+
+.forgotLink {
+  font-size: 12px;
+  color: #8B929C;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.forgotLink:hover {
+  color: #F06820;
+}
+
+/* ── Input ───────────────────────────────────────────────────────── */
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  color: #8B929C;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input {
+  width: 100%;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 11px 40px 11px 38px;
+  font-size: 14px;
+  color: #F5F6F8;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none;
+}
+
+.input::placeholder {
+  color: rgba(139, 146, 156, 0.5);
+}
+
+.input:focus {
+  border-color: rgba(240, 104, 32, 0.5);
+  box-shadow: 0 0 0 3px rgba(240, 104, 32, 0.1);
+}
+
+/* ── Eye toggle ──────────────────────────────────────────────────── */
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  color: #8B929C;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.eyeBtn:hover {
+  color: #F5F6F8;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Sign in button ──────────────────────────────────────────────── */
+.signInBtn {
+  width: 100%;
+  background: #F06820;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.signInBtn:hover {
+  background: #D95810;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(240, 104, 32, 0.3);
+}
+
+.signInBtn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.dividerText {
+  font-size: 12px;
+  color: #8B929C;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ── Google button ───────────────────────────────────────────────── */
+.googleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 11px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #F5F6F8;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.googleBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.googleBtn:active {
+  transform: translateY(0);
+}
+
+/* ── Signup prompt ───────────────────────────────────────────────── */
+.signupPrompt {
+  font-size: 13px;
+  color: #8B929C;
+  text-align: center;
+}
+
+.signupLink {
+  color: #F06820;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.signupLink:hover {
+  color: #FB8C40;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 24px;
+    border-radius: 14px;
+  }
+
+  .logoLink {
+    top: 18px;
+    left: 20px;
+  }
+}

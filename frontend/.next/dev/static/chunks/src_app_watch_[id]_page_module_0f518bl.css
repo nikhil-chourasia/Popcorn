@@ -1,0 +1,256 @@
+/* [project]/src/app/watch/[id]/page.module.css [app-client] (css) */
+.page-module__HP3rDG__root {
+  color: #f5f6f8;
+  background: #000;
+  flex-direction: column;
+  min-height: 100dvh;
+  font-family: inherit;
+  display: flex;
+}
+
+.page-module__HP3rDG__topBar {
+  z-index: 10;
+  background: #000000e6;
+  border-bottom: 1px solid #ffffff0d;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding: 0 20px;
+  display: flex;
+}
+
+.page-module__HP3rDG__backBtn {
+  color: #8b929c;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color .15s, background .15s;
+  display: flex;
+}
+
+.page-module__HP3rDG__backBtn:hover {
+  color: #f5f6f8;
+  background: #ffffff0f;
+}
+
+.page-module__HP3rDG__topTitle {
+  color: #f5f6f8;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+}
+
+.page-module__HP3rDG__playerWrap {
+  cursor: pointer;
+  background: #000;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-module__HP3rDG__hideCursor {
+  cursor: none;
+}
+
+.page-module__HP3rDG__video {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100dvh - 56px);
+  display: block;
+}
+
+.page-module__HP3rDG__bigPlayOverlay {
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .2s;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.page-module__HP3rDG__bigPlayOverlay.page-module__HP3rDG__hidden {
+  opacity: 0;
+}
+
+.page-module__HP3rDG__bigPlayBtn {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  background: #f06820e6;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: 72px;
+  transition: transform .15s;
+  display: flex;
+  box-shadow: 0 0 40px #f0682066;
+}
+
+.page-module__HP3rDG__controls {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.page-module__HP3rDG__controlsVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.page-module__HP3rDG__controlsGrad {
+  pointer-events: none;
+  background: linear-gradient(to top, #000000e0 0%, #0000 100%);
+  height: 180px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.page-module__HP3rDG__controlsInner {
+  z-index: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px 18px;
+  display: flex;
+  position: relative;
+}
+
+.page-module__HP3rDG__seekBar {
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.page-module__HP3rDG__seekTrack {
+  background: #fff3;
+  border-radius: 2px;
+  height: 3px;
+  position: relative;
+}
+
+.page-module__HP3rDG__seekFill {
+  pointer-events: none;
+  background: #f06820;
+  border-radius: 2px;
+  height: 100%;
+  transition: width .1s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page-module__HP3rDG__seekThumb {
+  pointer-events: none;
+  opacity: 0;
+  background: #f06820;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  transition: opacity .15s;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px #f0682099;
+}
+
+.page-module__HP3rDG__seekBar:hover .page-module__HP3rDG__seekThumb {
+  opacity: 1;
+}
+
+.page-module__HP3rDG__seekBar:hover .page-module__HP3rDG__seekTrack {
+  height: 5px;
+  transition: height .15s;
+}
+
+.page-module__HP3rDG__controlsRow {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.page-module__HP3rDG__leftControls, .page-module__HP3rDG__rightControls {
+  align-items: center;
+  gap: 4px;
+  display: flex;
+}
+
+.page-module__HP3rDG__controlBtn {
+  color: #f5f6f8;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  transition: background .15s, color .15s;
+  display: flex;
+}
+
+.page-module__HP3rDG__controlBtn:hover {
+  color: #f06820;
+  background: #ffffff1a;
+}
+
+.page-module__HP3rDG__volumeSlider {
+  appearance: none;
+  cursor: pointer;
+  background: #ffffff40;
+  border-radius: 2px;
+  outline: none;
+  width: 80px;
+  height: 3px;
+}
+
+.page-module__HP3rDG__volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #f06820;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.page-module__HP3rDG__volumeSlider::-moz-range-thumb {
+  cursor: pointer;
+  background: #f06820;
+  border: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.page-module__HP3rDG__timeDisplay {
+  color: #ffffffb3;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=src_app_watch_%5Bid%5D_page_module_0f518bl.css.map*/

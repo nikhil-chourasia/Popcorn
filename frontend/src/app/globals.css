@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* ── Popcorn Design Tokens ─────────────────────────────────────────
+   Palette: Popcorn 2
+   #080808  Deep Black   → primary background
+   #1A1A1A  Charcoal     → card / surface
+   #F06820  Orange       → primary accent
+   #FB8C40  Soft Orange  → secondary accent / hover
+   #F5F6F8  Off-white    → primary text
+   #8B929C  Slate        → muted text
+──────────────────────────────────────────────────────────────────── */
+:root {
+  --bg:          #080808;
+  --surface:     #1A1A1A;
+  --accent:      #F06820;
+  --accent-dim:  #D95810;
+  --text:        #F5F6F8;
+  --muted:       #8B929C;
+  --border:      rgba(255, 255, 255, 0.07);
+}
+
+/* ── Reset & Base ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  min-height: 100dvh;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--surface);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+
+/* ── Selection ──────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(240, 104, 32, 0.28);
+  color: #fff;
+}
