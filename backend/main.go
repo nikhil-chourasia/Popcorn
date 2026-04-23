@@ -47,6 +47,7 @@ func main() {
 	http.HandleFunc("/api/auth/callback", handlers.HandleGoogleCallback)
 	http.HandleFunc("/api/me",            withCORS(handlers.HandleMe))
 	http.HandleFunc("/api/drive/files",   withCORS(handlers.HandleDriveFilesList))
+	http.HandleFunc("/api/drive/stream/", withCORS(handlers.HandleDriveStream))
 
 	fmt.Println("Popcorn backend starting... ")
 	log.Fatal(http.ListenAndServe(":"+port, nil))

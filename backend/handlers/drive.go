@@ -60,7 +60,7 @@ func HandleDriveFilesList(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Drive request failed", http.StatusInternalServerError)
 		return
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close()		// always close the response
 
 	if resp.StatusCode == http.StatusUnauthorized {
 		http.Error(w, "Access token expired", http.StatusUnauthorized)
@@ -68,7 +68,8 @@ func HandleDriveFilesList(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var result DriveResponse
-	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+	err = json.NewDecoder(resp.Body).Decode(&result)
+	if err != nil {
 		http.Error(w, "Failed to decode Drive response", http.StatusInternalServerError)
 		return
 	}
