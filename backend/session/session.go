@@ -1,10 +1,12 @@
 package session
 
 import (
+	"backend/auth"
 	"context"
 	"crypto/rand"
 	"encoding/base64"
 	"encoding/json"
+
 	// "os"
 	"time"
 
@@ -70,4 +72,25 @@ func Get(id string) (SessionData, bool) {
 
 func Delete(id string) {
 	client.Del(context.Background(), "session:"+id)
+}
+
+func EnsureFreshToken(sessionID string, data SessionData) (SessionData, error) {
+	if time.Now().Before(data.ExpiresAt.Add(-5 * time.Minute)) {
+		return data, nil	// token valid
+	}
+
+	newData, err := auth.RefreshAccessToken(data.RefreshToken)
+	if err != nil{
+		return data, err
+	}
+
+	data.AccessToken = newData.AccessToken
+	data.ExpiresAt = newData.ExpiresIn
+
+	err = Save(sessionID, data)
+	if err != nil {
+		return data, err
+	}
+
+	return data, nil
 }

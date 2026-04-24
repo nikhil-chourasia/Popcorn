@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	"backend/auth"
 	"backend/session"
 )
 
@@ -25,6 +26,12 @@ func HandleDriveStream(w http.ResponseWriter, r *http.Request) {
 	data, ok := session.Get(cookie.Value)
 	if !ok {
 		http.Error(w, "Session not found", http.StatusUnauthorized)
+		return
+	}
+
+	data, err = session.EnsureFreshToken(cookie.Value, data)
+	if err != nil {
+		http.Error(w, "Failed to refresh token", http.StatusInternalServerError)
 		return
 	}
 
@@ -54,8 +61,30 @@ func HandleDriveStream(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode == http.StatusUnauthorized {
-		http.Error(w, "Access token expired", http.StatusUnauthorized)
-		return
+		resp.Body.Close()
+
+		newData, err := auth.RefreshAccessToken(data.RefreshToken)
+		if err != nil {
+			http.Error(w, "Session Expired", http.StatusUnauthorized)
+			return
+		}
+
+		data.AccessToken = newData.AccessToken
+		data.ExpiresAt = newData.ExpiresIn
+		session.Save(cookie.Value, data)
+		
+		req2, _ := http.NewRequest("GET", driveURL, nil)
+		req2.Header.Set("Authorization", "Bearer"+newData.AccessToken)
+		if rng := r.Header.Get("Range"); rng != "" {
+			req2.Header.Set("Range", rng)
+		}
+
+		resp, err := client.Do(req2)
+		defer resp.Body.Close()
+		if err != nil {
+			http.Error(w, "Authentication Failed", http.StatusUnauthorized)
+			return
+		}
 	}
 
 	for _, key := range []string{
