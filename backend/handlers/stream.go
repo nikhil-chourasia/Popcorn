@@ -99,5 +99,22 @@ func HandleDriveStream(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(resp.StatusCode)
-	io.Copy(w, resp.Body)
+	buf := make([]byte, 512*1024)
+	flusher, canFlush := w.(http.Flusher)
+
+	for {
+		n, err := resp.Body.Read(buf)
+		if n >0 {
+			w.Write(buf[:n])
+			if canFlush {
+				flusher.Flush()
+			}
+		}
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			break
+		}
+	}
 }
