@@ -1,6 +1,7 @@
 # General files
 ledger
 Project Information.md
+Understanding.md
 
 # Environments (sensitive data)
 backend/.env

@@ -1,2 +1,9 @@
-frontend/package-lock.json linguist-generated=true
-frontend/yarn.lock linguist-generated=true
+# Treat the entire web/frontend folder as "vendored" (ignored for stats)
+web/* linguist-vendored
+frontend/dist/* linguist-vendored
+
+# Ignore specific massive files
+package-lock.json linguist-generated
+
+# If you want to make sure Go is always counted, even in subfolders
+*.go linguist-detectable=true
