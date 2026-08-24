@@ -37,12 +37,12 @@ Popcorn/
 | Layer       | Technology               | Status        |
 |-------------|--------------------------|---------------|
 | Frontend    | Next.js 16.2.2 + React 19| Scaffolded    |
-| Backend     | Go (proxy server)         | Not started   |
-| Real-time   | Socket.IO                 | Not started   |
-| Database    | MongoDB (metadata)        | Not started   |
-| Cache/Auth  | Redis (OAuth tokens)      | Not started   |
-| Auth        | Google OAuth 2.0          | Not started   |
-| Storage     | Google Drive API          | Not started   |
+| Backend     | Go (proxy server)        | Complete      |
+| Real-time   | WebSockets (gorilla)     | Complete      |
+| Database    | MongoDB (metadata)       | Not started   |
+| Cache/Auth  | Redis (OAuth tokens)     | Complete      |
+| Auth        | Google OAuth 2.0         | Complete      |
+| Storage     | Google Drive API         | Complete      |
 
 ---
 

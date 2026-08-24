@@ -12,12 +12,34 @@
   height: 56px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
   padding: 0 20px;
   background: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   flex-shrink: 0;
   z-index: 10;
+}
+
+.topLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.createRoomBtn {
+  background: #F06820;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.createRoomBtn:hover {
+  background: #D95810;
 }
 
 .backBtn {

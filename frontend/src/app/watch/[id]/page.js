@@ -66,8 +66,27 @@ export default function WatchPage() {
   const [muted, setMuted] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
   const [fileName, setFileName] = useState("Loading...");
+  const [roomId, setRoomId] = useState(null);
 
   const streamURL = `${API}/api/drive/stream/${id}`;
+
+  async function createRoom() {
+    try {
+      const res = await fetch(`${API}/api/room/create`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fileId: id }),
+      });
+      if (!res.ok) throw new Error("Failed to create room");
+      const data = await res.json();
+      setRoomId(data.roomId);
+      router.push(`/room/${data.roomId}`);
+    } catch (err) {
+      console.error(err);
+      alert("Could not create room.");
+    }
+  }
 
   // Fetch file name from the /api/drive/files list
   useEffect(() => {
@@ -143,11 +162,16 @@ export default function WatchPage() {
     <div className={styles.root}>
       {/* Back bar */}
       <div className={styles.topBar}>
-        <button className={styles.backBtn} onClick={() => router.push("/library")}>
-          <IconBack />
-          <span>Library</span>
+        <div className={styles.topLeft}>
+          <button className={styles.backBtn} onClick={() => router.push("/library")}>
+            <IconBack />
+            <span>Library</span>
+          </button>
+          <span className={styles.topTitle}>{fileName}</span>
+        </div>
+        <button className={styles.createRoomBtn} onClick={createRoom}>
+          Watch Together
         </button>
-        <span className={styles.topTitle}>{fileName}</span>
       </div>
 
       {/* Player */}

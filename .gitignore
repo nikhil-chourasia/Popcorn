@@ -10,3 +10,5 @@ frontend/.env
 
 # Dependencies
 frontend/node_modules/
+
+.obsidian
